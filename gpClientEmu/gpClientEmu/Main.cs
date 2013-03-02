@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
+using System.IO;
 using NetworkCommsDotNet;
 
 namespace gpClientEmu
@@ -10,7 +10,10 @@ namespace gpClientEmu
 	{
 
 		static void Main(string[] args)
-		{
+		{ 
+			NetworkComms.AppendGlobalIncomingPacketHandler<byte[]>("Picture", IncomingMessage);
+			TCPConnection.StartListening(true);
+			/*
 			//Request server IP and port number
 			//Console.WriteLine("Please enter the server IP and port in the format 192.168.0.1:10000 and press return:");
 			//string serverInfo = Console.ReadLine();
@@ -47,15 +50,26 @@ namespace gpClientEmu
 				
 				//Send the message in a single line
 				NetworkComms.SendObject("Message", serverIP, serverPort, messageToSend);
-				
+				*/
+
 				//Check if user wants to go around the loop
-				Console.WriteLine("\nPress q to quit or any other key to send another message.");
-				if (Console.ReadKey(true).Key == ConsoleKey.Q) break;
-				else loopCounter++;
-			}
-			
-			//We have used comms so we make sure to call shutdown
+				//Console.WriteLine("\nPress q to quit or any other key to send another message.");
+				//if (Console.ReadKey(true).Key == ConsoleKey.Q) break;
+				//else loopCounter++;
+
+			Console.WriteLine("\nPress any key to close server.");
+			Console.ReadKey(true);
 			NetworkComms.Shutdown();
 		}
+		private static void IncomingMessage (PacketHeader header, Connection connection, byte[] picture)
+		{	
+			Console.WriteLine("Received picture");
+			File.WriteAllBytes("/Users/smashinimo/testing.jpg", picture);
+		}
+			//We have used comms so we make sure to call shutdown
+
 	}
+
+
+		
 }
