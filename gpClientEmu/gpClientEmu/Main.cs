@@ -11,8 +11,15 @@ namespace gpClientEmu
 
 		static void Main(string[] args)
 		{ 
-			Messenger client = new Messenger ();
-			client.Send();
+
+				NetSender client = new NetSender ();
+				while (true) {
+					Console.WriteLine ("Message\n");
+					string message = Console.ReadLine ();
+					client.SocketSendReceive (message, "192.168.43.205", 2000);
+					message = null;
+					Console.ReadKey ();
+			}
 
 		}
 

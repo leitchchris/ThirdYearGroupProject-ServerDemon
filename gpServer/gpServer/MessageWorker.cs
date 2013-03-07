@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using System.Net;
+using System.Net.Sockets;
 using System.Drawing;
 using NetworkCommsDotNet;
 
@@ -26,7 +28,8 @@ namespace gpServer
 			//foreach (System.Net.IPEndPoint localEndPoint in TCPConnection.ExistingLocalListenEndPoints()) Console.WriteLine("{0}:{1}", localEndPoint.Address, localEndPoint.Port);
 			DateTime time = DateTime.Now;              // Use current time
 			string format = "MMM ddd d HH:mm yyyy";    // Use this format
-			Console.WriteLine("Started at - {0}", time.ToString(format)); 
+			Console.WriteLine("Started MessageWorker at - {0}", time.ToString(format));
+			Console.Write ("IP: {0}",LocalIPAddress ());
 			//Let the user close the server
 			
 			
@@ -51,7 +54,7 @@ namespace gpServer
 		{
 			//Console.WriteLine("\nA message was recieved from " + connection.ToString() + " which said '" + message + "'.");
 			Console.WriteLine (message);
-			switch (message) {
+			/*switch (message) {
 			case "A":
 				Console.WriteLine("YOu are agnolijing");
 				break;
@@ -61,8 +64,23 @@ namespace gpServer
 			case "Null":
 				Console.WriteLine("Users is mashing the keys");
 				break;
-			}
+			}*/
 			
+		}
+
+		public string LocalIPAddress()
+		{
+			IPHostEntry host;
+			string localIP = "";
+			host = Dns.GetHostEntry(Dns.GetHostName());
+			foreach (IPAddress ip in host.AddressList)
+			{
+				if (ip.AddressFamily == AddressFamily.InterNetwork)
+				{
+					localIP = ip.ToString();
+				}
+			}
+			return localIP;
 		}
 	}
 }

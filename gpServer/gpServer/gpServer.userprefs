@@ -1,10 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.Workbench ActiveDocument="../../gpClientEmu/gpClientEmu/SecResever.cs">
     <Files>
-      <File FileName="../../gpClientEmu/gpClientEmu/Main.cs" Line="16" Column="4" />
+      <File FileName="../../gpClientEmu/gpClientEmu/Main.cs" Line="1" Column="1" />
       <File FileName="../../gpClientEmu/gpClientEmu/SecResever.cs" Line="15" Column="3" />
-      <File FileName="../../gpClientEmu/gpClientEmu/Messenger.cs" Line="56" Column="17" />
+      <File FileName="../../gpClientEmu/gpClientEmu/Messenger.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
