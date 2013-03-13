@@ -33,9 +33,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
-    <Reference Include="NetworkCommsDotNetComplete">
-      <HintPath>bin\Debug\NetworkCommsDotNetComplete.dll</HintPath>
-    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="log4net">
       <HintPath>bin\Debug\log4net.dll</HintPath>
@@ -46,7 +43,6 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="IdWorker.cs" />
     <Compile Include="MessageWorker.cs" />
-    <Compile Include="EmbedWorker.cs" />
     <Compile Include="Log.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

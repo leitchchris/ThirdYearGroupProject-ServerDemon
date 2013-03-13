@@ -1,12 +1,11 @@
 using System;
 using System.Drawing;
 using System.IO;
-using NetworkCommsDotNet;
 
 namespace gpServer
 {
 	public class IdWorker
-	{
+	{/*
 		private Bitmap _pic; // pic might be a byte array not shure on this one.
 		private string _name; // name of the person if we have it
 		private byte[] byteStream;
@@ -32,10 +31,10 @@ namespace gpServer
 			MemoryStream ms = new MemoryStream();
 			Picture.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
 			byteStream = ms.ToArray();
-			NetworkComms.SendObject("Picture", "192.168.1.88", 10000, byteStream);
+			//NetworkComms.SendObject("Picture", "192.168.1.88", 10000, byteStream);
 
 
-		}
+		}*/
 	}
 }
 
