@@ -13,7 +13,9 @@ namespace gpClientEmu
 		{ 
 
 			NetSender client = new NetSender ();
-			client.SocketSendReceive ("172.20.108.36", 2000);
+			Console.WriteLine ("Please enter the ip of the server\n");
+			string ip = Console.ReadLine ();
+			client.SocketSendReceive (ip, 2001);
 	
 		}
 

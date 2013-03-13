@@ -24,10 +24,10 @@ namespace gpServer
 			string format = "MMM ddd d HH:mm yyyy";    // Use this format
 			Console.WriteLine("Started MessageWorker at - {0}", time.ToString(format));
 			Console.Write ("IP: {0}",LocalIPAddress ());
-
-			listener = new TcpListener (2000);
+			IPAddress ipAddress = Dns.GetHostEntry("localhost").AddressList[0];
+			listener = new TcpListener (ipAddress,2001);
 			listener.Start ();
-			Console.WriteLine ("Server started on 2000");
+			Console.WriteLine ("\nServer started on 2001");
 			for (int i = 0; i <LIMIT; i++) {
 				Thread t = new Thread (new ThreadStart (ListnerService));
 				t.Start ();
@@ -43,6 +43,7 @@ namespace gpServer
 					while (true){
 						string msg = sr.ReadLine();
 						Console.WriteLine(msg);
+
 					}
 					s.Close();
 				}catch(Exception e){

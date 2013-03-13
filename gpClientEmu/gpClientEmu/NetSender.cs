@@ -22,13 +22,13 @@ namespace gpClientEmu
 			TcpClient client = new TcpClient (server, port);
 			try{
 				Stream s = client.GetStream();
-				StreamReader sr = new StreamReader(s);
+				//StreamReader sr = new StreamReader(s);
 				StreamWriter sw = new StreamWriter(s);
 				sw.AutoFlush = true;
 				while(true){
 					Console.Write("Type some stuff\n");
 					string msg = Console.ReadLine();
-					sw.WriteLine(msg);
+					sw.WriteLine(msg+"\r");
 					if (msg == ""){
 						Console.Write("Closing");
 						break;
