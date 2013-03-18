@@ -1,16 +1,17 @@
 using System;
-using System.Drawing;
 using System.IO;
+using System.Net;
+using System.Net.Sockets;
 
 namespace gpServer
 {
 	public class IdWorker
-	{/*
-		private Bitmap _pic; // pic might be a byte array not shure on this one.
+	{
+		private string _pic; // pic might be a byte array not shure on this one.
 		private string _name; // name of the person if we have it
-		private byte[] byteStream;
+		private string _clientIP;
 
-		public Bitmap Picture{
+		public string Picture{
 			get {return _pic;}
 			set { _pic = value;}
 		}
@@ -20,21 +21,51 @@ namespace gpServer
 			set { _name = value;}
 		}
 
+		public string clientIP {
+			get { return _clientIP;}
+			set { _clientIP = value;}
+		}
 
+		public IdWorker(){
+		}
+		
+		public void PicSend(){
+			byte[] data = new byte[1024];
+			int sent;
+			Socket droid = new Socket(AddressFamily.InterNetwork,SocketType.Stream, ProtocolType.Tcp);
+			try{
+				droid.Connect(clientIP);
+			}
+			catch (SocketException e){
+				Console.WriteLine("Unable to connect to server: {0}", e.ToString());
+			}
+			Picture = "/Users/smashinimo/face.jpg";
 
-		public IdWorker ()
+			sent = SendVarData(droid, File.ReadAllBytes(Picture));
+			
+			//Console.WriteLine("Disconnecting from server...");
+			droid.Shutdown(SocketShutdown.Both);
+			droid.Close();
+
+		}
+		private static int SendVarData(Socket s, byte[] data)
 		{
-			// we nead to send the result of the kennects detection to the droid and listen for a responce if they are to be alowed.
-			//
-
-			Picture = new Bitmap("/Users/smashinimo/face.jpg");
-			MemoryStream ms = new MemoryStream();
-			Picture.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-			byteStream = ms.ToArray();
-			//NetworkComms.SendObject("Picture", "192.168.1.88", 10000, byteStream);
-
-
-		}*/
+			int total = 0;
+			int size = data.Length;
+			int dataleft = size;
+			int sent;
+			
+			byte[] datasize = new byte[4];
+			datasize = BitConverter.GetBytes(size);
+			sent = s.Send(datasize);
+			
+			while (total < size){
+				sent = s.Send(data, total, dataleft, SocketFlags.None);
+				total += sent;
+				dataleft -= sent;
+			}
+			return total;
+		}
 	}
 }
 
