@@ -30,18 +30,18 @@ namespace gpServer
 		}
 		
 		public void PicSend(){
-			byte[] data = new byte[1024];
-			int sent;
+			IPAddress ip = IPAddress.Parse (clientIP);
+			//byte[] data = new byte[1024];
 			Socket droid = new Socket(AddressFamily.InterNetwork,SocketType.Stream, ProtocolType.Tcp);
 			try{
-				droid.Connect(clientIP);
+				droid.Connect(ip,2001);
 			}
 			catch (SocketException e){
 				Console.WriteLine("Unable to connect to server: {0}", e.ToString());
 			}
 			Picture = "/Users/smashinimo/face.jpg";
 
-			sent = SendVarData(droid, File.ReadAllBytes(Picture));
+			SendVarData(droid, File.ReadAllBytes(Picture));
 			
 			//Console.WriteLine("Disconnecting from server...");
 			droid.Shutdown(SocketShutdown.Both);

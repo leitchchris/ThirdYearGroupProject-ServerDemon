@@ -19,9 +19,9 @@ namespace gpServer
 			set { _clientIP = value;}
 		}
 
-		public MessageWorker ()
+		public MessageWorker()
 		{
-			//this deals with all messages sent to the server 
+			//this deals with all messages sent to the server
 		}
 
 		public void Start(){
@@ -42,7 +42,7 @@ namespace gpServer
 				t.Start ();
 			}
 		}
-		public static string ListnerService(){
+		public static void ListnerService(){
 			try {
 			Byte[] bytes = new byte[256];
 			string data = null;
@@ -61,7 +61,8 @@ namespace gpServer
 					while((i = stream.Read(bytes, 0, bytes.Length))!=0){
 					data = System.Text.Encoding.ASCII.GetString(bytes, 0,i);
 					Console.WriteLine("{0}", data);
-						return data;
+					//return data;
+					MessageParse(data);
 
 				}
 				client.Close();
@@ -86,6 +87,21 @@ namespace gpServer
 				}
 			}
 			return localIP;
+		}
+
+		public static void MessageParse(string data){
+			Console.WriteLine (data);
+			switch (data) {
+			case "A":
+				Console.WriteLine("You acknowledge");
+				break;
+			case "K":
+				Console.WriteLine("You are telling them to bugger of");
+				break;
+			case "Null":
+				Console.WriteLine("Users is mashing the keys");
+				break;
+			}
 		}
 	}
 }
