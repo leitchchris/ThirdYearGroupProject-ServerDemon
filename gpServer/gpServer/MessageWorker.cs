@@ -90,12 +90,12 @@ namespace gpServer
 		}
 
 		public static void MessageParse(string data){
-			Console.WriteLine (data);
+			//Console.WriteLine (data);
 			switch (data) {
-			case "A":
+			case "Y":
 				Console.WriteLine("You acknowledge");
 				break;
-			case "K":
+			case "N":
 				Console.WriteLine("You are telling them to bugger of");
 				break;
 			case "Null":

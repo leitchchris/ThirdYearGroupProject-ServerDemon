@@ -6,20 +6,20 @@ using System.Net.Sockets;
 
 namespace gpClientEmu
 {
-	public class NetSender
+	public class Messager
 	{
 		public string host { get; set;}
 		public int port { get; set; }
 
 
 
-		public NetSender ()
+		public Messager ()
 		{
 		}
 
-		public  void SocketSendReceive(string server, int port) 
+		public void Tx(string ip, int port) 
 		{
-			TcpClient client = new TcpClient (server, port);
+			TcpClient client = new TcpClient (ip, port);
 			try{
 				Stream s = client.GetStream();
 				//StreamReader sr = new StreamReader(s);
@@ -28,7 +28,7 @@ namespace gpClientEmu
 				while(true){
 					Console.Write("Type some stuff\n");
 					string msg = Console.ReadLine();
-					sw.WriteLine(msg+"\r");
+					sw.WriteLine(msg+"\r\n");
 					if (msg == ""){
 						Console.Write("Closing");
 						break;

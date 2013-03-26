@@ -11,16 +11,17 @@ namespace gpClientEmu
 		static void Main(string[] args)
 		{ 
 
-			NetSender client = new NetSender ();
+			Messager client = new Messager ();
 			Console.WriteLine ("Please enter the ip of the server\n");
 			string ip = Console.ReadLine ();
-			client.SocketSendReceive (ip, 2001);
+			client.Tx (ip, 2001);
 			//above is rubbish and neaded replaced
 
 			//call your class hear
 
 			//IDWorker = Kenect
-
+			IdWorker person = new IdWorker ();
+			person.PicRx ();
 			//MessageWorker = Droid
 
 			//EmbededWorker = Snap Net

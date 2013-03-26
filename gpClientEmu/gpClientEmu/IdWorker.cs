@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 
-namespace gpServer
+namespace gpClientEmu
 {
 	public class IdWorker
 	{
@@ -68,7 +68,7 @@ namespace gpServer
 		}
 
 		public void PicRx(){
-
+			
 		}
 	}
 }

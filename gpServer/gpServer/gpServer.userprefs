@@ -1,16 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="IdWorker.cs">
-    <Files>
-      <File FileName="IdWorker.cs" Line="50" Column="4" />
-      <File FileName="MessageWorker.cs" Line="88" Column="5" />
-      <File FileName="EmbededWorker.cs" Line="40" Column="5" />
-      <File FileName="Main.cs" Line="15" Column="15" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" selected="True">
-          <Node name="gpServer" expanded="True" />
+        <State expanded="True">
+          <Node name="gpClientEmu" expanded="True" />
         </State>
       </Pad>
     </Pads>

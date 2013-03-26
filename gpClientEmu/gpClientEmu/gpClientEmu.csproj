@@ -37,7 +37,8 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="NetSender.cs" />
+    <Compile Include="IdWorker.cs" />
+    <Compile Include="Messager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
