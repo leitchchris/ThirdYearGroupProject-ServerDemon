@@ -14,7 +14,7 @@ namespace gpClientEmu
 			Messager client = new Messager ();
 			Console.WriteLine ("Please enter the ip of the server\n");
 			string ip = Console.ReadLine ();
-			client.Tx (ip, 2001);
+			client.Tx (ip, 2000);
 			//above is rubbish and neaded replaced
 
 			//call your class hear
