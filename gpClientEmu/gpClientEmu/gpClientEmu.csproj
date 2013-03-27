@@ -37,8 +37,8 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="IdWorker.cs" />
-    <Compile Include="Messager.cs" />
+    <Compile Include="cEmuIdWorker.cs" />
+    <Compile Include="cEmuMessager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

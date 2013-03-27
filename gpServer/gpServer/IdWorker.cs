@@ -30,17 +30,21 @@ namespace gpServer
 		}
 		
 		public void PicTx(){
-			IPAddress ip = IPAddress.Parse (clientIP);
+			IPEndPoint ip = new IPEndPoint (IPAddress.Parse("127.0.0.1"), 2002);
 			//byte[] data = new byte[1024];
 			Socket droid = new Socket(AddressFamily.InterNetwork,SocketType.Stream, ProtocolType.Tcp);
 			try{
-				droid.Connect(ip,2001);
+				droid.Connect(ip);
+				Picture = "/Users/smashinimo/face.jpeg";
 			}
-			catch (SocketException e){
-				Console.WriteLine("Unable to connect to server: {0}", e.ToString());
+			catch(Exception ex){
+				if ( ex is SocketException ||
+				    ex is FileNotFoundException){
+					Console.WriteLine("{0}",ex);
+				}else{
+					throw;
+				}
 			}
-			Picture = "/Users/smashinimo/face.jpg";
-
 			SendVarData(droid, File.ReadAllBytes(Picture));
 			
 			//Console.WriteLine("Disconnecting from server...");

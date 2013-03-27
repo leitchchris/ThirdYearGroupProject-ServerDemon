@@ -45,6 +45,7 @@
     <Compile Include="MessageWorker.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="EmbededWorker.cs" />
+    <Compile Include="Messager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

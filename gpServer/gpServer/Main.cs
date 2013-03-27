@@ -11,7 +11,7 @@ namespace gpServer
 	{
 		static void Main(string[] args)
 		{
-
+			/*
 			MessageWorker listner = new MessageWorker();
 			listner.Start();
 			/*EmbededWorker snap = new EmbededWorker ();

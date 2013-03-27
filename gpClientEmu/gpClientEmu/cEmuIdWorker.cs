@@ -29,50 +29,14 @@ namespace gpClientEmu
 
 		public IdWorker(){
 		}
-		
-		public void PicTx(){
-			IPAddress ip = IPAddress.Parse (clientIP);
-			//byte[] data = new byte[1024];
-			Socket droid = new Socket(AddressFamily.InterNetwork,SocketType.Stream, ProtocolType.Tcp);
-			try{
-				droid.Connect(ip,2001);
-			}
-			catch (SocketException e){
-				Console.WriteLine("Unable to connect to server: {0}", e.ToString());
-			}
-			Picture = "/Users/smashinimo/face.jpg";
-
-			SendVarData(droid, File.ReadAllBytes(Picture));
-			
-			//Console.WriteLine("Disconnecting from server...");
-			droid.Shutdown(SocketShutdown.Both);
-			droid.Close();
-
-		}
-		private static int SendVarData(Socket s, byte[] data)
-		{
-			int total = 0;
-			int size = data.Length;
-			int dataleft = size;
-			int sent;
-			
-			byte[] datasize = new byte[4];
-			datasize = BitConverter.GetBytes(size);
-			sent = s.Send(datasize);
-			
-			while (total < size){
-				sent = s.Send(data, total, dataleft, SocketFlags.None);
-				total += sent;
-				dataleft -= sent;
-			}
-			return total;
-		}
 
 		public void PicRx(){
 			Console.WriteLine("Server is starting...");
 			byte[] data = new byte[1024];
-			IPEndPoint ipep = new IPEndPoint(IPAddress.Any, 9050);
-			
+
+			IPEndPoint ipep = new IPEndPoint(IPAddress.Any, 2002);
+			//IPAddress ip = IPAddress.Parse ("192.168.1.88");
+
 			Socket newsock = new Socket(AddressFamily.InterNetwork,
 			                            SocketType.Stream, ProtocolType.Tcp);
 			
@@ -91,13 +55,18 @@ namespace gpClientEmu
 				try{
 					Image bmp = Image.FromStream(ms);
 					//save the picture
+					bmp.Save("/Users/smashinimo/RxPic.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
 				}
 				catch (ArgumentException e){
-					Console.WriteLine("something broke");
+					Console.WriteLine("{0}", e);
 				}
 				
-				if (data.Length == 0)
+				if (data.Length == 0){
 					newsock.Listen(10);
+				}
+				else{
+					break;
+				}
 			}
 			//Console.WriteLine("Disconnected from {0}", newclient.Address);
 			client.Close();
