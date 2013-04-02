@@ -4,7 +4,6 @@ using System.Text;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using System.Drawing;
 
 
 namespace gpServer
@@ -101,6 +100,25 @@ namespace gpServer
 			case "Null":
 				Console.WriteLine("Users is mashing the keys");
 				break;
+			case "K:Active":
+				//kenect has been activates and nead to colect the aprochers information and send it to the droid
+				break;
+			case "D:LightsON":
+				//droid has requested the light be turned on, send to embedded LightsON
+				break;
+			case "D:LightsOF":
+				//droid has requested the light be turned of, send to embedded LightsOF
+				break;
+			case "D:addUsr":
+				//droid has requested to add user to acl
+				break;
+			case "D:rmUsr":
+				//droid has requested to remove user
+				break;
+			case "D:blockUsr":
+				//droid has requested user be blocked
+				break;
+
 			}
 		}
 	}
