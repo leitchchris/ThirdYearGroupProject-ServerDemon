@@ -1,11 +1,19 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../gpClientEmu/gpClientEmu/cEmuIdWorker.cs">
+    <Files>
+      <File FileName="IdWorker.cs" Line="48" Column="51" />
+      <File FileName="Messager.cs" Line="49" Column="22" />
+      <File FileName="Main.cs" Line="49" Column="40" />
+      <File FileName="IDPicRx.cs" Line="34" Column="17" />
+      <File FileName="../../gpClientEmu/gpClientEmu/Main.cs" Line="27" Column="47" />
+      <File FileName="../../gpClientEmu/gpClientEmu/cEmuIdWorker.cs" Line="30" Column="21" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="gpServer" expanded="True">
-            <Node name="Messager.cs" selected="True" />
+          <Node name="gpClientEmu" expanded="True">
+            <Node name="References" expanded="True" selected="True" />
           </Node>
         </State>
       </Pad>

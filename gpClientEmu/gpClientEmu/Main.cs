@@ -16,7 +16,7 @@ namespace gpClientEmu
 				switch (opt) {
 				case "-M":
 				case "-m":
-					Console.WriteLine("Starting Messager");
+					Console.WriteLine("Starting Messager..");
 					Messager client = new Messager ();
 					Console.WriteLine ("Please enter the ip of the server\n");
 					string ip = Console.ReadLine ();
@@ -24,14 +24,14 @@ namespace gpClientEmu
 					break;
 				case "-I":
 				case "-i":
-					Console.WriteLine("MOO");
+					Console.WriteLine("Starting IDWorker..");
 					IdWorker id = new IdWorker();
 					id.PicRx();
 					break;
 				case "-?":
 					Console.WriteLine("Hellp!");
 					Console.WriteLine("------");
-					Console.WriteLine("Start the program with thease options.");
+					Console.WriteLine("Start gpClientEmu with thease options.");
 					Console.WriteLine("\r");
 					Console.WriteLine("Start Messeger: -M");
 					Console.WriteLine("Start Id Worker: -I");
@@ -41,7 +41,7 @@ namespace gpClientEmu
 			catch(IndexOutOfRangeException e){ //this is just to catch null option
 				Console.WriteLine("Hellp!");
 				Console.WriteLine("------");
-				Console.WriteLine("Start the program with thease options.");
+				Console.WriteLine("Start gpClientEmu with thease options.");
 				Console.WriteLine("\r");
 				Console.WriteLine("Start Messeger: -M");
 				Console.WriteLine("Start Id Worker: -I");

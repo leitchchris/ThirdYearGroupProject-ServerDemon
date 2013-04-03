@@ -30,11 +30,15 @@ namespace gpServer
 		}
 		
 		public void PicTx(){
-			IPEndPoint ip = new IPEndPoint (IPAddress.Parse("127.0.0.1"), 2002);
+			string ip = "192.168.1.107";
+			int port = 2002;
+			Socket droidSoc = new Socket(AddressFamily.InterNetwork,SocketType.Stream, ProtocolType.Tcp);
+			IPAddress ipAdder = IPAddress.Parse(ip);
+			IPEndPoint droid = new IPEndPoint(ipAdder, port);
 			//byte[] data = new byte[1024];
-			Socket droid = new Socket(AddressFamily.InterNetwork,SocketType.Stream, ProtocolType.Tcp);
+			
 			try{
-				droid.Connect(ip);
+				droidSoc.Connect(droid);
 				Picture = "/Users/smashinimo/face.jpeg";
 			}
 			catch(Exception ex){
@@ -45,11 +49,11 @@ namespace gpServer
 					throw;
 				}
 			}
-			SendVarData(droid, File.ReadAllBytes(Picture));
+			SendVarData(droidSoc, File.ReadAllBytes(Picture));
 			
 			//Console.WriteLine("Disconnecting from server...");
-			droid.Shutdown(SocketShutdown.Both);
-			droid.Close();
+			droidSoc.Shutdown(SocketShutdown.Both);
+			droidSoc.Close();
 
 		}
 		private static int SendVarData(Socket s, byte[] data)
@@ -71,7 +75,7 @@ namespace gpServer
 			return total;
 		}
 
-		public void PicRx(){
+		public void idDirWatch(){
 
 		}
 	}

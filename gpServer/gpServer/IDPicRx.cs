@@ -4,17 +4,21 @@ using System.Net;
 using System.Net.Sockets;
 using System.Drawing;
 
-namespace gpClientEmu
+namespace gpServer
 {
-	public class IdWorker
+	public class IDPicRx
 	{
+		/*
+		 * This is only if neaded. It will reseave anything sent from the server if one is spesafied (server using IDworker.cs 
+		 */
+
 		private string _pic; // pic might be a byte array not shure on this one.
 		private string _name; // name of the person if we have it
 		private string _clientIP;
 
 		public string Picture{
 			get {return _pic;}
-			set { _pic = value;}
+			set { _pic = value;} 
 		}
 
 		public string Name {
@@ -27,7 +31,7 @@ namespace gpClientEmu
 			set { _clientIP = value;}
 		}
 
-		public IdWorker(){
+		public IDPicRx(){
 		}
 
 		public void PicRx(){
@@ -58,7 +62,7 @@ namespace gpClientEmu
 					bmp.Save("/Users/smashinimo/RxPic.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
 				}
 				catch (ArgumentException e){
-					Console.WriteLine("Image error {0}", e);
+					Console.WriteLine("{0}", e);
 				}
 				
 				if (data.Length == 0){

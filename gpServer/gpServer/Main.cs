@@ -23,9 +23,13 @@ namespace gpServer{
 					break;
 				case "-M":
 				case "-m":
+					//Console.WriteLine("Please enter the port");
+					//int port = Console.ReadLine();
+					//Console.WriteLine("Please enter the ip");
+					//string ip = Console.ReadLine();
 					Console.WriteLine("Starting Messager");
 					Messager mgr = new Messager();
-					mgr.Tx();
+					mgr.Tx("192.168.1.65",2000);
 					break;
 				case "-I":
 				case "-i":
@@ -42,8 +46,8 @@ namespace gpServer{
 				case "-?":
 					Console.WriteLine("Hellp!");
 					Console.WriteLine("------");
-					Console.WriteLine("Start the program with thease options.");
-					Console.WriteLine("\r");
+					Console.WriteLine("Start gpServer with thease options.");
+					Console.WriteLine("\r");//to insert a blank line
 					Console.WriteLine("Start MessageWorker: -Mw");
 					Console.WriteLine("Start Messeger: -M");
 					Console.WriteLine("Start Id Worker: -I");
@@ -54,7 +58,7 @@ namespace gpServer{
 			catch(IndexOutOfRangeException e){ //this is just to catch null option
 				Console.WriteLine("Hellp!");
 				Console.WriteLine("------");
-				Console.WriteLine("Start the program with thease options.");
+				Console.WriteLine("Start gpServer with thease options.");
 				Console.WriteLine("\r");
 				Console.WriteLine("Start MessageWorker: -Mw");
 				Console.WriteLine("Start Messeger: -M");
