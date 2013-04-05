@@ -4,19 +4,14 @@ using System.Text;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Text.RegularExpressions;
 
 
-namespace gpServer
-{
-	public class MessageWorker
-	{
+namespace gpServer{
+	public class MessageWorker{
 		static TcpListener listener;
 		const int LIMIT = 5; //max 5 clients, this actualy now makes 5 sepret client threds at run.
-		private string _clientIP;
-		public string clientIP {
-			get { return _clientIP;}
-			set { _clientIP = value;}
-		}
+		public static string clientIP { get; set; }
 
 		public MessageWorker()
 		{
@@ -57,12 +52,11 @@ namespace gpServer
 
 				int i;
 
-					while((i = stream.Read(bytes, 0, bytes.Length))!=0){
+				while((i = stream.Read(bytes, 0, bytes.Length))!=0){
 					data = System.Text.Encoding.ASCII.GetString(bytes, 0,i);
-					Console.WriteLine("{0}", data);
+					Console.WriteLine("{0}", data);  //pritns out message to console
 					//return data;
 					MessageParse(data);
-
 				}
 				client.Close();
 			}
@@ -90,37 +84,76 @@ namespace gpServer
 
 		public static void MessageParse(string data){
 			//Console.WriteLine (data);
+			string input = data;
+			Match match = Regex.Match(input, @"D:(\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b)"); //match for an ip sent to the server
+			if (match.Success) {
+				string[] message = Regex.Split(input, "^D:"); //get only the ip
+				foreach (string ip in message){
+					clientIP = ip;
+					Console.WriteLine(clientIP);
+				}
+			}
 			switch (data) {
 			case "Y":
-				Console.WriteLine("You acknowledge");
+				Console.WriteLine ("You acknowledge");
 				break;
 			case "N":
-				Console.WriteLine("You are telling them to bugger of");
+				Console.WriteLine ("You are telling them to bugger of");
 				break;
 			case "Null":
-				Console.WriteLine("Users is mashing the keys");
+				Console.WriteLine ("Users is mashing the keys");
 				break;
 			case "K:Active":
 				//kenect has been activates and nead to colect the aprochers information and send it to the droid
+				Console.Write(data);
 				break;
-			case "D:LightsON":
-				//droid has requested the light be turned on, send to embedded LightsON
+			case "D:H-Lights-ON":
+				//droid has requested the hall light be turned on, send to embedded LightsON
+				Console.Write(data);
 				break;
-			case "D:LightsOF":
-				//droid has requested the light be turned of, send to embedded LightsOF
+			case "D:H-Lights-OFF":
+				//droid has requested the hall light be turned of, send to embedded LightsOF
+				Console.Write(data);
+				break;
+			case "D:B-Lights-ON":
+				//droid has requested the bedroom light be turned on, send to embedded LightsON
+				Console.Write(data);
+				break;
+			case "D:B-Lights-OFF":
+				//droid has requested the bedroom light be turned of, send to embedded LightsOF
+				Console.Write(data);
+				break;
+			case "D:L-Lights-ON":
+				//droid has requested the living room light be turned on, send to embedded LightsON
+				Console.Write(data);
+				break;
+			case "D:L-Lights-OFF":
+				//droid has requested the living room light be turned of, send to embedded LightsOF
+				Console.Write(data);
+				break;
+			case "D:WC-Lights-ON":
+				//droid has requested the bathroom light be turned on, send to embedded LightsON
+				Console.Write(data);
+				break;
+			case "D:WC-Lights-OFF":
+				//droid has requested the bathroom light be turned of, send to embedded LightsOF
+				Console.Write(data);
 				break;
 			case "D:addUsr":
 				//droid has requested to add user to acl
+				Console.Write(data);
 				break;
 			case "D:rmUsr":
 				//droid has requested to remove user
+				Console.Write(data);
 				break;
 			case "D:blockUsr":
 				//droid has requested user be blocked
+				Console.Write(data);
 				break;
-
 			}
-		}
-	}
+		}//end messageParse
+
+	}//end class
 }
 
