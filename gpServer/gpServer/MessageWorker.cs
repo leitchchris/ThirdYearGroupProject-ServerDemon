@@ -55,7 +55,6 @@ namespace gpServer{
 				while((i = stream.Read(bytes, 0, bytes.Length))!=0){
 					data = System.Text.Encoding.ASCII.GetString(bytes, 0,i);
 					Console.WriteLine("{0}", data);  //pritns out message to console
-					//return data;
 					MessageParse(data);
 				}
 				client.Close();
