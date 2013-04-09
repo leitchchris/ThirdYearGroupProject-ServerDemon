@@ -1,9 +1,14 @@
 ﻿<Properties>
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="MessageWorker.cs">
     <Files>
       <File FileName="MessageWorker.cs" Line="91" Column="1" />
     </Files>
+=======
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench>
+>>>>>>> tiday
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">

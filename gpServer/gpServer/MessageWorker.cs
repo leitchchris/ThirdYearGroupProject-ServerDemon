@@ -101,6 +101,7 @@ namespace gpServer{
 				Console.WriteLine ("You are telling them to bugger of");
 				break;
 			case "Null":
+<<<<<<< HEAD
 				Console.WriteLine ("Users is mashing the keys");
 				break;
 			case "K:Active":
@@ -118,6 +119,13 @@ namespace gpServer{
 			case "D:B-Lights-ON":
 				//droid has requested the bedroom light be turned on, send to embedded LightsON
 				Console.Write(data);
+=======
+				break;
+			case "K:Active":
+				//kenect has been activates and nead to colect the approaches information and send it to the droid
+				IdWorker approacher = new IdWorker();
+				approacher.PicRx();
+>>>>>>> tiday
 				break;
 			case "D:B-Lights-OFF":
 				//droid has requested the bedroom light be turned of, send to embedded LightsOF
@@ -151,6 +159,12 @@ namespace gpServer{
 				//droid has requested user be blocked
 				Console.Write(data);
 				break;
+<<<<<<< HEAD
+=======
+			case "D:allowUsr":
+				//droid has requested user be allowed in
+				break;
+>>>>>>> tiday
 			}
 		}//end messageParse
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 using System.IO;
 using System.Drawing;
 
@@ -29,7 +30,15 @@ namespace gpServer{
 					//string ip = Console.ReadLine();
 					Console.WriteLine("Starting Messager");
 					Messager mgr = new Messager();
+<<<<<<< HEAD
 					mgr.Tx("192.168.1.65",2000);
+=======
+					Console.WriteLine("Please enter the ip and port as, \t ip:port ");
+					string usrInput = Console.ReadLine();
+					string ip = usrInput.Split(':').First();
+					int port = int.Parse(usrInput.Split(':').Last());
+					mgr.Tx(ip, port);
+>>>>>>> tiday
 					break;
 				case "-I":
 				case "-i":
