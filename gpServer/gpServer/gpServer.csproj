@@ -47,6 +47,8 @@
     <Compile Include="EmbededWorker.cs" />
     <Compile Include="Messager.cs" />
     <Compile Include="IDPicRx.cs" />
+    <Compile Include="httpd.cs" />
+    <Compile Include="HTTPHost.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

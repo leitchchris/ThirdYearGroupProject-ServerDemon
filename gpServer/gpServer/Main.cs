@@ -13,6 +13,11 @@ namespace gpServer{
 				string opt = args[0];
 
 				switch (opt) {
+				case "-H":
+				case "-h":
+					Console.WriteLine("Starting httpd..");
+					HTTPHost.main();
+					break;
 				case "-Mw":
 				case "-MW":
 				case "-mw":
@@ -60,6 +65,7 @@ namespace gpServer{
 				Console.WriteLine("------");
 				Console.WriteLine("Start gpServer with thease options.");
 				Console.WriteLine("\r");
+				Console.WriteLine("Start HTTPd: -H");
 				Console.WriteLine("Start MessageWorker: -Mw");
 				Console.WriteLine("Start Messeger: -M");
 				Console.WriteLine("Start Id Worker: -I");

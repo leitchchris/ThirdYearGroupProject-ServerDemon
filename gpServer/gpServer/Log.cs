@@ -7,6 +7,9 @@ namespace netwrokcommsTest
 	{
 		public Log ()
 		{
+			/*
+			 * no loggin as of yet, sorry
+			 */
 		}
 	}
 }
