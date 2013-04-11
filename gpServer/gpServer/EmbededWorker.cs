@@ -8,6 +8,10 @@ namespace gpServer
 	public class EmbededWorker
 	{
 
+		/*
+		 * USE MESSAGER INSTED
+		 */
+
 		public string host { get; set;}
 		public int port { get; set; }
 		
