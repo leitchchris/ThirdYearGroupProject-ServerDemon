@@ -49,6 +49,7 @@
     <Compile Include="IDPicRx.cs" />
     <Compile Include="httpd.cs" />
     <Compile Include="HTTPHost.cs" />
+    <Compile Include="ACL.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

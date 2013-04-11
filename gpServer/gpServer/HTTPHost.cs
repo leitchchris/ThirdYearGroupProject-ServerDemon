@@ -29,7 +29,7 @@ namespace gpServer
 		
 		public static string SendResponse(HttpListenerRequest request)
 		{
-			return string.Format("<HTML><BODY>My web page.<br>{0}</BODY></HTML>", DateTime.Now);    
+			return string.Format("<HTML><BODY>Home Automation<br>{0}</BODY></HTML>", DateTime.Now);    
 		}
 		public static string testPage(HttpListenerRequest request)
 		{
@@ -37,7 +37,7 @@ namespace gpServer
 		}
 		public static string xml(HttpListenerRequest request)
 		{
-			string acl = File.ReadAllText(@"/Users/smashinimo/Desktop/accessList.xml");
+			string acl = File.ReadAllText(@"/Users/smashinimo/Code/accessList.xml");
 			return string.Format(acl);    
 		}
 	}

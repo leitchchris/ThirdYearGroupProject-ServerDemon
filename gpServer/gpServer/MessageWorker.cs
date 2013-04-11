@@ -23,9 +23,9 @@ namespace gpServer{
 			DateTime time = DateTime.Now;              // Use current time
 			string format = "MMM ddd d HH:mm yyyy";    // Use this format
 			Console.WriteLine("Started MessageWorker at - {0}", time.ToString(format));
-			Console.Write (" I think the IP is: {0}",LocalIPAddress ()); //deprecated,  gan get the wrong ip addess, check with your settings
+			//Console.Write (" I think the IP is: {0}",); //deprecated,  gan get the wrong ip addess, check with your settings
 			//IPAddress ipAddress = Dns.GetHostEntry("localhost").AddressList[0]; //gets the loopback, comenting out
-			IPAddress ip = IPAddress.Parse(LocalIPAddress ());
+			IPAddress ip = IPAddress.Parse("129.215.232.2");
 			Console.WriteLine (" The program thinks the ip: {0}", ip); //this is the corect IP
 
 			listener = new TcpListener (ip,2001);
@@ -53,9 +53,10 @@ namespace gpServer{
 				int i;
 
 				while((i = stream.Read(bytes, 0, bytes.Length))!=0){
-					data = System.Text.Encoding.ASCII.GetString(bytes, 0,i);
-					Console.WriteLine("{0}", data);  //pritns out message to console
-					MessageParse(data);
+						data = System.Text.Encoding.ASCII.GetString(bytes, 0,i);
+						//Console.WriteLine("{0}", data);  //pritns out message to console
+						MessageGetClientIP(data);
+						MessageParse(data);
 				}
 				client.Close();
 			}
@@ -66,6 +67,8 @@ namespace gpServer{
 			}
 		}
 
+		#region getip(broken)
+		/*
 		public string LocalIPAddress()
 		{
 			IPHostEntry host;
@@ -81,18 +84,31 @@ namespace gpServer{
 			return localIP;
 		}
 
-		public static void MessageParse(string data){
+		public string GetIP(){
+			string strHostName = "";
+			strHostName = System.Net.Dns.GetHostName();
+			IPHostEntry ipEntry = System.Net.Dns.GetHostEntry(strHostName);
+			IPAddress[] addr = ipEntry.AddressList;
+			return addr[addr.Length-1].ToString();
+		} */
+		#endregion
+
+		public static void MessageGetClientIP(string data){
 			//Console.WriteLine (data);
 			string input = data;
-			Match match = Regex.Match(input, @"D:(\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b)"); //match for an ip sent to the server
+			Match match = Regex.Match (input, @"D:(\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b)"); //match for an ip sent to the server
 			if (match.Success) {
-				string[] message = Regex.Split(input, "^D:"); //get only the ip
-				foreach (string ip in message){
+				string[] message = Regex.Split (input, "^D:"); //get only the ip
+				foreach (string ip in message) {
 					clientIP = ip;
-					Console.WriteLine(clientIP);
+					Console.WriteLine (clientIP);
 				}
 			}
-			switch (data) {
+		}
+		public static void MessageParse(string data){
+			string foo = data;
+
+			switch (foo) {
 			case "Y":
 				Console.WriteLine ("You acknowledge");
 				break;
@@ -102,17 +118,18 @@ namespace gpServer{
 			case "Null":
 				Console.WriteLine ("Users is mashing the keys");
 				break;
+				/*
 			case "K:Active":
 				//kenect has been activates and nead to colect the aprochers information and send it to the droid
-				Console.Write(data);
+				Console.Write(foo);
 				break;
 			case "D:H-Lights-ON":
 				//droid has requested the hall light be turned on, send to embedded LightsON
-				Console.Write(data);
+				Console.Write(foo);
 				break;
 			case "D:H-Lights-OFF":
 				//droid has requested the hall light be turned of, send to embedded LightsOF
-				Console.Write(data);
+				Console.Write(foo);
 				break;
 			case "D:B-Lights-ON":
 				//droid has requested the bedroom light be turned on, send to embedded LightsON
@@ -149,7 +166,7 @@ namespace gpServer{
 			case "D:blockUsr":
 				//droid has requested user be blocked
 				Console.Write(data);
-				break;
+				break; */
 			}
 		}//end messageParse
 
