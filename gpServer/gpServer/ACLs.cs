@@ -4,7 +4,7 @@ using System.IO;
 using System.Xml;
 
 namespace gpServer {
-	public class ACL {
+	public class ACLs {
 
 		int _id;
 		string _firstName;
@@ -18,32 +18,46 @@ namespace gpServer {
 		public string PicPath { get { return _picPath; } }
 		public bool Allow { get { return _allow; } }
 
+		/*
 		public ACL (int id, string firstName, string lastName, string picPath, bool allow){
 			this._id = id;
 			this._firstName = firstName;
 			this._lastName = lastName;
 			this._picPath = picPath;
 			this._allow = allow;
+		}*/
+
+		public ACLs(){
 		}
 
-		public static string openAcl (){
-			string acl = File.ReadAllText(@"/Users/smashinimo/Code/accessList.xml");
-			return string.Format(acl);    
+		public void addUsr(){
+			XmlDocument acl = new XmlDocument();
+			acl.Load (@"/Users/smashinimo/accessList.xml");
+			XmlNodeList node = acl.SelectNodes ("//People");
+			Console.WriteLine(node);
+			/*
+			using (XmlReader reader = XmlReader.Create(acl)) {
+				while (reader.Read()){
+					if (reader.IsStartElement()){
+						switch (reader.Name){
+							case "person":
+							Console.WriteLine(reader.Name);
+							break;
+						}
+					}
+				}
+			}*/
 		}
 
-		public void addUsr(string acl){
+		public void rmUsr(XmlDocument openAcl){
 
 		}
 
-		public void rmUsr(string acl){
+		public void blockUsr(XmlDocument openAcl){
 
 		}
 
-		public void blockUsr(string acl){
-
-		}
-
-		public void allowUsr(string acl){
+		public void allowUsr(XmlDocument openAcl){
 
 		}
 

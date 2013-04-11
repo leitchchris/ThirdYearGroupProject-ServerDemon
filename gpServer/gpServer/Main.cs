@@ -13,6 +13,11 @@ namespace gpServer{
 				string opt = args[0];
 
 				switch (opt) {
+				case "-A":
+				case "-a":
+					ACLs list =  new ACLs();
+					list.addUsr();
+					break;
 				case "-H":
 				case "-h":
 					Console.WriteLine("Starting httpd..");

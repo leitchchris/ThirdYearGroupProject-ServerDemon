@@ -37,6 +37,8 @@
     <Reference Include="log4net">
       <HintPath>bin\Debug\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -49,7 +51,7 @@
     <Compile Include="IDPicRx.cs" />
     <Compile Include="httpd.cs" />
     <Compile Include="HTTPHost.cs" />
-    <Compile Include="ACL.cs" />
+    <Compile Include="ACLs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

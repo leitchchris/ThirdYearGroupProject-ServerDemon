@@ -18,7 +18,7 @@ namespace gpServer
 		{
 			if (!HttpListener.IsSupported)
 				throw new NotSupportedException(
-					"FBAR");
+					"FUBAR");
 			
 			// URI prefixes are required, for example 
 			// "http://localhost:8080/index/".
