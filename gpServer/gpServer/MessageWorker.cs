@@ -27,7 +27,7 @@ namespace gpServer{
 			Console.WriteLine("Started MessageWorker at - {0}", time.ToString(format));
 			//Console.Write (" I think the IP is: {0}",); //deprecated,  gan get the wrong ip addess, check with your settings
 			//IPAddress ipAddress = Dns.GetHostEntry("localhost").AddressList[0]; //gets the loopback, comenting out
-			IPAddress ip = IPAddress.Parse("129.215.232.2");
+			IPAddress ip = IPAddress.Parse(LocalIPAddress());
 			Console.WriteLine (" The program thinks the ip: {0}", ip); //this is the corect IP
 
 			listener = new TcpListener (ip,2001);
@@ -68,8 +68,6 @@ namespace gpServer{
 			}
 		}
 
-		#region getip(broken)
-		/*
 		public string LocalIPAddress()
 		{
 			IPHostEntry host;
@@ -91,8 +89,7 @@ namespace gpServer{
 			IPHostEntry ipEntry = System.Net.Dns.GetHostEntry(strHostName);
 			IPAddress[] addr = ipEntry.AddressList;
 			return addr[addr.Length-1].ToString();
-		} */
-		#endregion
+		}
 
 		public static void MessageParse(string data){
 			//Console.WriteLine (data);

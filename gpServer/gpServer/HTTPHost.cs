@@ -9,7 +9,7 @@ namespace gpServer
 {
 	public class HTTPHost
 	{
-		public HTTPHost ()
+		public HTTPHost()
 		{
 
 
@@ -37,7 +37,7 @@ namespace gpServer
 		}
 		public static string xml(HttpListenerRequest request)
 		{
-			string acl = File.ReadAllText(@"/Users/smashinimo/Code/accessList.xml");
+			string acl = File.ReadAllText(@"./accessList.xml");
 			return string.Format(acl);    
 		}
 	}

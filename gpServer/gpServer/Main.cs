@@ -39,9 +39,9 @@ namespace gpServer{
 					//string ip = Console.ReadLine();
 					Console.WriteLine("Starting Messager");
 					Messager mgr = new Messager();
-					//Console.Write("Please enter the ip");
-					//string ip = Console.ReadLine();
-					mgr.Tx("129.215.232.2",2001);
+					Console.Write("Please enter the ip\n");
+					string ip = Console.ReadLine();
+					mgr.Tx(ip,2000);
 					break;
 				case "-I":
 				case "-i":

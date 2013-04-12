@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<People>
+    <person>
+        <id>1</id>
+        <firstName>David</firstName>
+        <lastName>Borthwick</lastName>
+        <imageLocation></imageLocation>
+        <allow></allow>
+    </person>
+    <person>
+        <id>2</id>
+        <firstName>Christopher</firstName>
+        <lastName>Leitch</lastName>
+        <imageLocation></imageLocation>
+        <allow></allow>
+    </person>
+    <person>
+        <id>3</id>
+        <firstName>Ettiene</firstName>
+        <lastName>Hoqcaurd</lastName>
+        <imageLocation></imageLocation>
+        <allow></allow>
+    </person>
+    <person>
+        <id>4</id>
+        <firstName>Alistair</firstName>
+        <lastName>Ramage</lastName>
+        <imageLocation></imageLocation>
+        <allow></allow>
+    </person>
+</People>

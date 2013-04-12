@@ -28,7 +28,7 @@ namespace gpServer
 
 					Console.Write("Type some stuff\n");
 					string command = Console.ReadLine();
-					byte[] socketData = Encoding.ASCII.GetBytes(command+"\r\n");
+					byte[] socketData = Encoding.ASCII.GetBytes("\r\n"+command+"\r\n");
 					snapSoc.Send(socketData);
 					socketData = null;
 

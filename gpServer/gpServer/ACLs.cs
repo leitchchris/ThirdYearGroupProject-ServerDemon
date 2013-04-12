@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using System.IO;
 using System.Xml;
+using System.Xml.XPath;
 
 namespace gpServer {
 	public class ACLs {
@@ -19,7 +20,7 @@ namespace gpServer {
 		public bool Allow { get { return _allow; } }
 
 		/*
-		public ACL (int id, string firstName, string lastName, string picPath, bool allow){
+		public newACL (int id, string firstName, string lastName, string picPath, bool allow){
 			this._id = id;
 			this._firstName = firstName;
 			this._lastName = lastName;
@@ -32,21 +33,26 @@ namespace gpServer {
 
 		public void addUsr(){
 			XmlDocument acl = new XmlDocument();
-			acl.Load (@"/Users/smashinimo/accessList.xml");
-			XmlNodeList node = acl.SelectNodes ("//People");
-			Console.WriteLine(node);
-			/*
-			using (XmlReader reader = XmlReader.Create(acl)) {
-				while (reader.Read()){
-					if (reader.IsStartElement()){
-						switch (reader.Name){
-							case "person":
-							Console.WriteLine(reader.Name);
-							break;
-						}
-					}
+			acl.Load (@"./accessList.xml");
+			XPathNavigator list = acl.CreateNavigator();
+			// Compile a standard XPath expression
+			XPathExpression xpath; 
+			xpath = list.Compile("/People/person/lastName");
+			XPathNodeIterator iterator = list.Select(xpath);
+			
+			// Iterate on the node set
+			try
+			{
+				while (iterator.MoveNext())
+				{
+					XPathNavigator nav2 = iterator.Current.Clone();
+					Console.WriteLine("price: " + nav2.Value);
 				}
-			}*/
+			}
+			catch(Exception ex) 
+			{
+				Console.WriteLine(ex.Message);
+			}
 		}
 
 		public void rmUsr(XmlDocument openAcl){
