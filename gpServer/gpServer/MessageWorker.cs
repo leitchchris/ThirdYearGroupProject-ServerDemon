@@ -23,11 +23,12 @@ namespace gpServer{
 		public void Start(){
 
 			DateTime time = DateTime.Now;              // Use current time
-			string format = "MMM ddd d HH:mm yyyy";    // Use this format
+			string format = "MMM ddd d HH:mm yyyy";    // Use this format eg May Fri 12 15:16 2013
 			Console.WriteLine("Started MessageWorker at - {0}", time.ToString(format));
 			//Console.Write (" I think the IP is: {0}",); //deprecated,  gan get the wrong ip addess, check with your settings
 			//IPAddress ipAddress = Dns.GetHostEntry("localhost").AddressList[0]; //gets the loopback, comenting out
-			IPAddress ip = IPAddress.Parse(LocalIPAddress());
+			//IPAddress ip = IPAddress.Parse(LocalIPAddress()); //linux
+			IPAddress ip = IPAddress.Parse("192.168.0.1"); //mac
 			Console.WriteLine (" The program thinks the ip: {0}", ip); //this is the corect IP
 
 			listener = new TcpListener (ip,2001);

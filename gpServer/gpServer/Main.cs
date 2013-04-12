@@ -16,7 +16,7 @@ namespace gpServer{
 				case "-A":
 				case "-a":
 					ACLs list =  new ACLs();
-					list.addUsr();
+					list.allowUsr(1);
 					break;
 				case "-H":
 				case "-h":

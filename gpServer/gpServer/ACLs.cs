@@ -32,12 +32,20 @@ namespace gpServer {
 		}
 
 		public void addUsr(){
+		
+		}
+
+		public void rmUsr(XmlDocument openAcl){
+
+		}
+
+		public void blockUsr(int aclID){
 			XmlDocument acl = new XmlDocument();
 			acl.Load (@"./accessList.xml");
 			XPathNavigator list = acl.CreateNavigator();
 			// Compile a standard XPath expression
 			XPathExpression xpath; 
-			xpath = list.Compile("/People/person/lastName");
+			xpath = list.Compile("/People/person[ID='"+aclID+"']/allow");
 			XPathNodeIterator iterator = list.Select(xpath);
 			
 			// Iterate on the node set
@@ -45,8 +53,8 @@ namespace gpServer {
 			{
 				while (iterator.MoveNext())
 				{
-					XPathNavigator nav2 = iterator.Current.Clone();
-					Console.WriteLine("price: " + nav2.Value);
+					XPathNavigator nav = iterator.Current.Clone();
+					Console.WriteLine("price: " + nav.Value);
 				}
 			}
 			catch(Exception ex) 
@@ -55,16 +63,31 @@ namespace gpServer {
 			}
 		}
 
-		public void rmUsr(XmlDocument openAcl){
+		public void allowUsr(int aclID){
 
-		}
-
-		public void blockUsr(XmlDocument openAcl){
-
-		}
-
-		public void allowUsr(XmlDocument openAcl){
-
+			XmlTextReader reader = new XmlTextReader (@"./accessList.xml");
+			XmlDocument acl = new XmlDocument();
+			acl.Load (reader);
+			reader.Close();
+			XPathNavigator list = acl.CreateNavigator();
+			// Compile a standard XPath expression
+			XPathExpression xpath; 
+			xpath = list.Compile("/People/person[id='" + aclID + "']");
+			XPathNodeIterator iterator = list.Select(xpath);
+			
+			// Iterate on the node set
+			try
+			{
+				while (iterator.MoveNext())
+				{
+					XPathNavigator nav = iterator.Current.Clone();
+					Console.WriteLine("price: " + nav.Value);
+				}
+			}
+			catch(Exception ex) 
+			{
+				Console.WriteLine(ex.Message);
+			}
 		}
 
 

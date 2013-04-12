@@ -36,8 +36,8 @@ namespace gpServer
 					int iRx = snapSoc.Receive(buffer);
 					char[] chars = new char[iRx];
 					
-					//Decoder d = Encoding.ASCII.GetDecoder();
-					//int charLen = d.GetChars(buffer, 0, iRx, chars, 0);
+					Decoder d = Encoding.ASCII.GetDecoder();
+					int charLen = d.GetChars(buffer, 0, iRx, chars, 0);
 					String commandRecv = new String(chars);
 					Console.WriteLine("Rx:"+commandRecv);
 					//Rx(snapSoc);
@@ -57,10 +57,10 @@ namespace gpServer
 			int iRx = soc.Receive(buffer);
 			char[] chars = new char[iRx];
 			
-			//Decoder d = Encoding.ASCII.GetDecoder();
-			//int charLen = d.GetChars(buffer, 0, iRx, chars, 0);
+			Decoder d = Encoding.ASCII.GetDecoder();
+			int charLen = d.GetChars(buffer, 0, iRx, chars, 0);
 			String commandRecv = new String(chars);
-			Console.WriteLine ("Rx:"+commandRecv);
+			Console.WriteLine ("Rx:"+commandRecv+" "+charLen+"");
 		}
 
 	}

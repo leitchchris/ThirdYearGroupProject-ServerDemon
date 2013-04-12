@@ -19,9 +19,11 @@ namespace gpServer
 			httpd ws = new httpd(SendResponse, "http://localhost:8080/");
 			httpd ws2 = new httpd(testPage, "http://localhost:8080/test/");
 			httpd ws3 = new httpd(xml, "http://localhost:8080/xml/");
+			httpd ws4 = new httpd(xml, "http://localhost:8080/pic/");
 			ws.Run();
 			ws2.Run();
 			ws3.Run();
+			ws4.Run();
 			Console.WriteLine("A simple webserver. Press a key to quit.");
 			Console.ReadKey();
 			ws.Stop();
