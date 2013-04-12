@@ -1,33 +1,26 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Messager.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ACLs.cs">
     <Files>
-      <File FileName="ACLs.cs" Line="75" Column="45" />
-      <File FileName="Main.cs" Line="19" Column="19" />
-      <File FileName="Messager.cs" Line="28" Column="6" />
-      <File FileName="MessageWorker.cs" Line="115" Column="11" />
-      <File FileName="HTTPHost.cs" Line="21" Column="16" />
+      <File FileName="ACLs.cs" Line="76" Column="46" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="gpServer" expanded="True">
-            <Node name="Messager.cs" selected="True" />
-          </Node>
+          <Node name="gpServer" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/smashinimo/Code/gpProgect/ServerDemon/gpServer/gpServer/ACLs.cs" line="66" />
-      <Breakpoint file="/Users/smashinimo/Code/gpProgect/ServerDemon/gpServer/gpServer/Messager.cs" line="30" />
+      <Breakpoint file="/Users/smashinimo/Code/groupProgect/ServerDemon/gpServer/gpServer/ACLs.cs" line="66" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.gpServer>
     <MonoDevelop.Ide.CustomExecutionModes>
-      <Data Name="-A" Id="af2fbc33-ea43-4d10-a09c-97493ca539a9" ModeId="Mono Soft Debugger">
+      <Data Name="-A" Id="1b4399ce-9bb5-4f38-9aa6-13a7556c03a3" ModeId="Mono Soft Debugger">
         <CommandData>
           <Item Key="MonoDevelop.Ide.Execution.CustomArgsCustomizer">
             <Value Arguments="-A" ctype="CustomArgsExecutionModeData">
@@ -39,10 +32,10 @@
           </Item>
         </CommandData>
       </Data>
-      <Data Name="-M" Id="a69a71d8-c7f3-4bc3-898a-ba217ab55f12" ModeId="Mono Soft Debugger">
+      <Data Name="-Mw" Id="a04cc2ab-9d37-4465-a5b2-423dc51e6dd2" ModeId="Mono Soft Debugger">
         <CommandData>
           <Item Key="MonoDevelop.Ide.Execution.CustomArgsCustomizer">
-            <Value Arguments="-M" ctype="CustomArgsExecutionModeData">
+            <Value Arguments="-Mw" ctype="CustomArgsExecutionModeData">
               <EnvironmentVariables />
             </Value>
           </Item>

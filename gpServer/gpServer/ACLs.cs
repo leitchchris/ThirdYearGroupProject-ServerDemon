@@ -40,54 +40,35 @@ namespace gpServer {
 		}
 
 		public void blockUsr(int aclID){
-			XmlDocument acl = new XmlDocument();
-			acl.Load (@"./accessList.xml");
-			XPathNavigator list = acl.CreateNavigator();
-			// Compile a standard XPath expression
-			XPathExpression xpath; 
-			xpath = list.Compile("/People/person[ID='"+aclID+"']/allow");
-			XPathNodeIterator iterator = list.Select(xpath);
-			
-			// Iterate on the node set
-			try
-			{
-				while (iterator.MoveNext())
-				{
-					XPathNavigator nav = iterator.Current.Clone();
-					Console.WriteLine("price: " + nav.Value);
-				}
-			}
-			catch(Exception ex) 
-			{
-				Console.WriteLine(ex.Message);
-			}
-		}
-
-		public void allowUsr(int aclID){
-
+			string unblock = "TRUE";
 			XmlTextReader reader = new XmlTextReader (@"./accessList.xml");
 			XmlDocument acl = new XmlDocument();
 			acl.Load (reader);
 			reader.Close();
-			XPathNavigator list = acl.CreateNavigator();
-			// Compile a standard XPath expression
-			XPathExpression xpath; 
-			xpath = list.Compile("/People/person[id='" + aclID + "']");
-			XPathNodeIterator iterator = list.Select(xpath);
 			
-			// Iterate on the node set
-			try
-			{
-				while (iterator.MoveNext())
-				{
-					XPathNavigator nav = iterator.Current.Clone();
-					Console.WriteLine("price: " + nav.Value);
-				}
-			}
-			catch(Exception ex) 
-			{
-				Console.WriteLine(ex.Message);
-			}
+			XmlNode allow;
+			XmlElement top = acl.DocumentElement;
+			allow = top.SelectSingleNode("/People/person[id='" + aclID + "']/allow");
+			Console.WriteLine ("ACL: " + allow.InnerXml +" : ");
+			allow.InnerXml = unblock;
+			Console.WriteLine ("ACL: " + allow.InnerXml +" : ");
+			acl.Save(@"./accessList.xml");
+		}
+
+		public void allowUsr(int aclID){
+			String block = "BAN";
+			XmlTextReader reader = new XmlTextReader (@"./accessList.xml");
+			XmlDocument acl = new XmlDocument();
+			acl.Load (reader);
+			reader.Close();
+
+			XmlNode allow;
+			XmlElement top = acl.DocumentElement;
+			allow = top.SelectSingleNode("/People/person[id='" + aclID + "']/allow");
+			Console.WriteLine ("ACL: " + allow.InnerXml +" : ");
+			allow.InnerXml = block;
+			Console.WriteLine ("ACL: " + allow.InnerXml +" : ");
+			acl.Save(@"./accessList.xml");
 		}
 
 
