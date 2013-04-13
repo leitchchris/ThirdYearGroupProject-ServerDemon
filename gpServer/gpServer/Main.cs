@@ -28,7 +28,7 @@ namespace gpServer{
 					list.PicPath = imgLocal;
 					list.Allow = allow;
 					list.addUsr(5);*/
-					ACLs.rmUsr(4);
+					//ACLs.rmUsr(4);
 					break;
 				case "-H":
 				case "-h":
@@ -64,8 +64,8 @@ namespace gpServer{
 				case "-E":
 				case "-e":
 					Console.WriteLine("Starting EmbededWorker");
-					EmbededWorker snap = new EmbededWorker ();
-					snap.SocketSendReceive ("192.168.0.65", 2000);
+					Messager snap = new Messager ();
+					snap.Tx ("192.168.0.65", 2000);
 					break;
 				case "-?":
 					Console.WriteLine("Hellp!");

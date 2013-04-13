@@ -35,7 +35,7 @@ namespace gpServer
 		}
 		public static string testPage(HttpListenerRequest request)
 		{
-			return string.Format("<HTML><BODY><br>{0}</BODY></HTML>", DateTime.Now);    
+			return string.Format("<HTML><BODY>IT WORKS<br>{0}</BODY></HTML>", DateTime.Now);    
 		}
 		public static string xml(HttpListenerRequest request)
 		{

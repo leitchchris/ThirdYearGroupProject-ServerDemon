@@ -27,17 +27,34 @@ namespace gpServer{
 			Console.WriteLine("Started MessageWorker at - {0}", time.ToString(format));
 			//Console.Write (" I think the IP is: {0}",); //deprecated,  gan get the wrong ip addess, check with your settings
 			//IPAddress ipAddress = Dns.GetHostEntry("localhost").AddressList[0]; //gets the loopback, comenting out
-			//IPAddress ip = IPAddress.Parse(LocalIPAddress()); //linux
-			IPAddress ip = IPAddress.Parse("192.168.0.1"); //mac
-			Console.WriteLine (" The program thinks the ip: {0}", ip); //this is the corect IP
-
-			listener = new TcpListener (ip,2001);
-			listener.Start ();
-			Console.WriteLine ("\nServer started on 2001");
-			for (int i = 0; i <LIMIT; i++) {
-				Thread t = new Thread (new ThreadStart (ListnerService));
-				t.Start ();
+			try{
+				IPAddress ip = IPAddress.Parse(LocalIPAddress());
+				Console.WriteLine (" The program thinks the ip: {0}", ip); //this is the corect IP
+				
+				listener = new TcpListener (ip,2001);
+				listener.Start ();
+				Console.WriteLine ("\nServer started on 2001");
+				for (int i = 0; i <LIMIT; i++) {
+					Thread t = new Thread (new ThreadStart (ListnerService));
+					t.Start ();
+				}
+			}catch {
+				Console.WriteLine("Faild to get host ip. PLease spesafy local ip: eg 192.168.1.1\n");
+				string userIP = Console.ReadLine();
+				IPAddress localIp = IPAddress.Parse(userIP);
+				listener = new TcpListener (localIp,2001);
+				Console.WriteLine (" The program thinks the ip: {0}", localIp); //this is the corect IP
+				
+				listener = new TcpListener (localIp,2001);
+				listener.Start ();
+				Console.WriteLine ("\nServer started on 2001");
+				for (int i = 0; i <LIMIT; i++) {
+					Thread t = new Thread (new ThreadStart (ListnerService));
+					t.Start ();
+				}
 			}
+			//IPAddress ip = IPAddress.Parse("192.168.0.1"); //mac
+
 		}
 		public static void ListnerService(){
 			try {
@@ -116,7 +133,7 @@ namespace gpServer{
 				Console.WriteLine ("You acknowledge");
 				break;
 			case "N":
-				Console.WriteLine ("You are telling them to bugger of");
+				Console.WriteLine ("You are telling them to go away");
 				break;
 			case "Null":
 				Console.WriteLine ("Users is mashing the keys");
