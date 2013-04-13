@@ -7,31 +7,37 @@ using System.Xml.XPath;
 namespace gpServer {
 	public class ACLs {
 
-		int _id;
-		string _firstName;
-		string _lastName;
-		string _picPath;
-		string _allow;
+		private int _id;
+		private string _firstName;
+		private string _lastName;
+		private string _picPath;
+		private string _allow;
 
-		public int Id { get { return _id; } }
-		public string FirstName { get { return _firstName; } }
-		public string LastName { get { return _lastName; } }
-		public string PicPath { get { return _picPath; } }
-		public string Allow { get { return _allow; } }
-
-
-		public ACLs (int id, string firstName, string lastName, string picPath, string allow){
-			this._id = id;
-			this._firstName = firstName;
-			this._lastName = lastName;
-			this._picPath = picPath;
-			this._allow = allow;
+		public int Id {
+			get {return _id;}
+			set { _id = value;}
+		}
+		public string FirstName {
+			get {return _firstName;}
+			set { _firstName = value;}
+		}
+		public string LastName {
+			get {return _lastName;}
+			set { _lastName = value;}
+		}
+		public string PicPath {
+			get {return _picPath;}
+			set { _picPath = value;}
+		}
+		public string Allow {
+			get {return _allow;}
+			set { _allow = value;}
 		}
 
 		public ACLs(){
 		}
-
-		public static void addUsr(int aclID){
+		
+		public void addUsr(int aclID){
 			XmlTextReader reader = new XmlTextReader (@"./accessList.xml");
 			XmlDocument acl = new XmlDocument();
 			acl.Load (reader);
@@ -43,18 +49,25 @@ namespace gpServer {
 			XPathNavigator peopleCheck = aclCheck.CreateNavigator();
 			try{
 				XPathExpression expr = peopleCheck.Compile("/People/person[id]");
-				int idCheck = Convert.ToInt32(peopleCheck.InnerXml);
-				if (idCheck != aclID){
-					people = person.SelectSingleNode ("/People[last()]");
-					Console.WriteLine ("ACL: " + person.InnerXml +" : ");
-					XmlNode newPerson = acl.CreateElement ("person");
-					/*newPerson.InnerXml = "<id>"+Id+"</id>" +
-						"<firstName>"+FirstName+"</firstName>" +
-							"<lastName>"+LastName+"</lastName>" +
-							"<imageLocation>"+PicPath+"</imageLocation>" +
-							"<allow>"+Allow+"</allow>";*/
-					people.AppendChild (newPerson);
-					acl.Save (@"./accessList.xml");
+				XPathNodeIterator iterator = peopleCheck.Select(expr);
+				while (iterator.MoveNext()){
+					XPathNavigator idNav = iterator.Current.Clone();
+					int idCheck = Convert.ToInt32(idNav);
+					if (idCheck != aclID){
+						people = person.SelectSingleNode ("/People[last()]");
+						Console.WriteLine ("ACL: " + person.InnerXml +" : ");
+						XmlNode newPerson = acl.CreateElement ("person");
+						newPerson.InnerXml = "<id>"+Id+"</id>" +
+							"<firstName>"+FirstName+"</firstName>" +
+								"<lastName>"+LastName+"</lastName>" +
+								"<imageLocation>"+PicPath+"</imageLocation>" +
+								"<allow>"+Allow+"</allow>";
+						people.AppendChild (newPerson);
+						acl.Save (@"./accessList.xml");
+						break;
+					}
+					Console.WriteLine(@"Person oredy in the ACL");
+					break;
 				}
 			}
 			catch{
@@ -72,8 +85,8 @@ namespace gpServer {
 			XmlElement people = acl.DocumentElement;
 			allow = people.SelectSingleNode("/People/person[id='" + aclID + "']");
 			Console.WriteLine ("ACL: " + allow.InnerXml +" : ");
-			// remove tags and save the file
-			
+			people.RemoveChild (allow);
+			acl.Save (@"./accessList.xml");
 		}
 
 		public static void blockUsr(int aclID){

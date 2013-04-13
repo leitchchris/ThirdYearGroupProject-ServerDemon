@@ -15,7 +15,19 @@ namespace gpServer{
 				switch (opt) {
 				case "-A":
 				case "-a":
+					/*int id = 5;
+					string firstName = "foo";
+					string lastname = "boo";
+					string imgLocal = @"./repo/foo.png";
+					string allow = "BAN";
 					//ACLs.allowUsr(1);
+					ACLs list = new ACLs();
+					list.Id = id;
+					list.FirstName = firstName;
+					list.LastName = lastname;
+					list.PicPath = imgLocal;
+					list.Allow = allow;
+					list.addUsr(5);*/
 					ACLs.rmUsr(4);
 					break;
 				case "-H":
@@ -46,8 +58,8 @@ namespace gpServer{
 				case "-I":
 				case "-i":
 					Console.WriteLine("Starting ID Worker");
-					IdWorker id = new IdWorker();
-					id.PicTx();
+					IdWorker person = new IdWorker();
+					person.PicTx();
 					break;
 				case "-E":
 				case "-e":

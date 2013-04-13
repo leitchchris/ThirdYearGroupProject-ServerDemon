@@ -52,6 +52,7 @@
     <Compile Include="httpd.cs" />
     <Compile Include="HTTPHost.cs" />
     <Compile Include="ACLs.cs" />
+    <Compile Include="ACLsWorker.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
