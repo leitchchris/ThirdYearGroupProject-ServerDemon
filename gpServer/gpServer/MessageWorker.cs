@@ -140,10 +140,28 @@ namespace gpServer{
 				break;
 			case "K:Active":
 				//kenect has been activates and nead to colect the aprochers information and send it to the droid
+				Messager tellDroidActive = new Messager();
+				//tellDroid.Tx //tell droid there is somwon at the door
+				HTTPHost.Start();
+				Console.Write(msg);
+				break;
+			case "K:Unknown":
+				//unknowen person at the kenect activate http web picture and tell the droid
+				Messager tellDroidUnknown = new Messager();
+				//tellDroid.Tx //tell droid there is somwon at the door
+				HTTPHost.Start();
 				Console.Write(msg);
 				break;
 			case "D:H-Lights-ON":
 				//droid has requested the hall light be turned on, send to embedded LightsON
+				/*
+				 * light commands
+				 * greenOn greenOff
+				 * pulseBlue pulseRed
+				 * lampOn LampOff
+				 */
+				Messager snap = new Messager ();
+				snap.Tx("192.168.0.65", 2000,"greenOn");
 				Console.Write(msg);
 				break;
 			case "D:H-Lights-OFF":

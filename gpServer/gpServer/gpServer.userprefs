@@ -1,13 +1,19 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ACLs.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Main.cs">
     <Files>
-      <File FileName="ACLs.cs" Line="76" Column="46" />
+      <File FileName="ACLs.cs" Line="11" Column="29" />
+      <File FileName="MessageWorker.cs" Line="115" Column="15" />
+      <File FileName="HTTPHost.cs" Line="17" Column="27" />
+      <File FileName="Main.cs" Line="70" Column="1" />
+      <File FileName="Messager.cs" Line="53" Column="8" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="gpServer" expanded="True" selected="True" />
+          <Node name="gpServer" expanded="True">
+            <Node name="Main.cs" selected="True" />
+          </Node>
         </State>
       </Pad>
     </Pads>
@@ -15,6 +21,7 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/smashinimo/Code/groupProgect/ServerDemon/gpServer/gpServer/ACLs.cs" line="66" />
+      <Breakpoint file="/Users/smashinimo/Code/gpProgect/ServerDemon/gpServer/gpServer/Main.cs" line="69" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
@@ -36,6 +43,18 @@
         <CommandData>
           <Item Key="MonoDevelop.Ide.Execution.CustomArgsCustomizer">
             <Value Arguments="-Mw" ctype="CustomArgsExecutionModeData">
+              <EnvironmentVariables />
+            </Value>
+          </Item>
+          <Item Key="MonoDevelop.Ide.Execution.MonoExecutionCustomizer">
+            <Value ctype="MonoExecutionParameters" />
+          </Item>
+        </CommandData>
+      </Data>
+      <Data Name="-E" Id="67c27375-8b89-4432-a20d-487767adf851" ModeId="Mono Soft Debugger">
+        <CommandData>
+          <Item Key="MonoDevelop.Ide.Execution.CustomArgsCustomizer">
+            <Value Arguments="-E" ctype="CustomArgsExecutionModeData">
               <EnvironmentVariables />
             </Value>
           </Item>

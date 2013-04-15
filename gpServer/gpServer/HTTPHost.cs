@@ -14,7 +14,7 @@ namespace gpServer
 
 
 		}
-		public static void main(){
+		public static void Start(){
 			
 			httpd ws = new httpd(SendResponse, "http://localhost:8080/");
 			httpd ws2 = new httpd(testPage, "http://localhost:8080/test/");

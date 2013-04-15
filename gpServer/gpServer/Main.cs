@@ -33,12 +33,15 @@ namespace gpServer{
 				case "-H":
 				case "-h":
 					Console.WriteLine("Starting httpd..");
-					HTTPHost.main();
+					HTTPHost.Start();
 					break;
 				case "-Mw":
 				case "-MW":
 				case "-mw":
 				case "-mW":
+				case "-wM":
+				case "-Wm":
+				case "-wm":
 					Console.WriteLine("Starting MessageWorker");
 					MessageWorker listner = new MessageWorker();
 					listner.Start();
@@ -65,7 +68,7 @@ namespace gpServer{
 				case "-e":
 					Console.WriteLine("Starting EmbededWorker");
 					Messager snap = new Messager ();
-					snap.Tx ("192.168.0.65", 2000);
+					snap.Tx("192.168.0.65", 2000,"greenOn");
 					break;
 				case "-?":
 					Console.WriteLine("Hellp!");
