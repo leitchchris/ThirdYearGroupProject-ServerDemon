@@ -7,11 +7,11 @@ namespace gpServer
 {
 	public class IdWorker
 	{
-		private string _pic; // pic might be a byte array not shure on this one.
+		private byte _pic; // pic might be a byte array not shure on this one.
 		private string _name; // name of the person if we have it
 		private string _clientIP;
 
-		public string Picture{
+		public byte Picture{
 			get {return _pic;}
 			set { _pic = value;}
 		}

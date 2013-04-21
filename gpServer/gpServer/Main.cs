@@ -44,7 +44,7 @@ namespace gpServer{
 				case "-wm":
 					Console.WriteLine("Starting MessageWorker");
 					MessageWorker listner = new MessageWorker();
-					listner.Start();
+					listner.StartListner();
 					break;
 				case "-M":
 				case "-m":

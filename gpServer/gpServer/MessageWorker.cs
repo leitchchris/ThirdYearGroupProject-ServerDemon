@@ -20,7 +20,7 @@ namespace gpServer{
 			//this deals with all messages sent to the server
 		}
 
-		public void Start(){
+		public void StartListner(){
 
 			DateTime time = DateTime.Now;              // Use current time
 			string format = "MMM ddd d HH:mm yyyy";    // Use this format eg May Fri 12 15:16 2013
@@ -56,7 +56,7 @@ namespace gpServer{
 			//IPAddress ip = IPAddress.Parse("192.168.0.1"); //mac
 
 		}
-		public static void ListnerService(){
+		private static void ListnerService(){
 			try {
 			Byte[] bytes = new byte[256];
 			string data = null;
@@ -86,7 +86,7 @@ namespace gpServer{
 			}
 		}
 
-		public string LocalIPAddress()
+		private string LocalIPAddress()
 		{
 			IPHostEntry host;
 			string localIP = "";
@@ -101,7 +101,7 @@ namespace gpServer{
 			return localIP;
 		}
 
-		public string GetIP(){
+		private string GetIP(){
 			string strHostName = "";
 			strHostName = System.Net.Dns.GetHostName();
 			IPHostEntry ipEntry = System.Net.Dns.GetHostEntry(strHostName);
@@ -109,7 +109,7 @@ namespace gpServer{
 			return addr[addr.Length-1].ToString();
 		}
 
-		public static void MessageParse(string data){
+		private static void MessageParse(string data){
 			//Console.WriteLine (data);
 			string input = data;
 			Match matchIP = Regex.Match (input, @"D:(\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b)"); //match for an ip sent to the server
