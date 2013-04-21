@@ -56,7 +56,7 @@ namespace gpServer{
 					Messager mgr = new Messager();
 					Console.Write("Please enter the ip\n");
 					string ip = Console.ReadLine();
-					mgr.Tx(ip,2000);
+					mgr.Tx(ip,2002); //send to droid port
 					break;
 				case "-I":
 				case "-i":
