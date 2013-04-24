@@ -22,7 +22,7 @@ namespace gpServer
 				IPEndPoint droid = new IPEndPoint(ipAdder, port);
 				droidSoc.Connect(droid);
 
-				while(true){
+				//while(true){
 
 					//Rx(snapSoc);
 
@@ -41,9 +41,8 @@ namespace gpServer
 					//Rx(snapSoc);
 					if (msg == ""){
 						Console.Write("Closing");
-						break;
 					}
-				}
+				//}
 				droidSoc.Close ();
 			}finally{
 				//client.Close();

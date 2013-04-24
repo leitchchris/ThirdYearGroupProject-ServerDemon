@@ -1,9 +1,11 @@
 using System;
+using System.Net;
 using System.Threading;
 using System.Linq;
 using System.Text;
 using System.IO;
 using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace gpServer
 {
@@ -44,8 +46,8 @@ namespace gpServer
 		}
 		public static string pic(HttpListenerRequest request)
 		{
-			Image capturedPic = Image.FromFile (@"./foo.png");
-			return string.Format("<HTML><BODY><img border=\"0\" src=\"./{0}\"></BODY></HTML>",capturedPic);
+			Image capturedPic = Image.FromFile(@"./foo.png");
+			return string.Format("<HTML><BODY><img border=\"0\" src={0} width=\"304\" height=\"228\"></BODY></HTML>",capturedPic);
 		}
 	}
 }

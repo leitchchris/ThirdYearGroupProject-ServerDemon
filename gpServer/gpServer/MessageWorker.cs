@@ -28,7 +28,7 @@ namespace gpServer{
 			//Console.Write (" I think the IP is: {0}",); //deprecated,  gan get the wrong ip addess, check with your settings
 			//IPAddress ipAddress = Dns.GetHostEntry("localhost").AddressList[0]; //gets the loopback, comenting out
 			try{
-				IPAddress ip = IPAddress.Parse(LocalIPAddress());
+				IPAddress ip = IPAddress.Parse("192.168.0.88");
 				Console.WriteLine (" The program thinks the ip: {0}", ip); //this is the corect IP
 				
 				listener = new TcpListener (ip,2001);
@@ -142,14 +142,14 @@ namespace gpServer{
 				//kenect has been activates and nead to colect the aprochers information and send it to the droid
 				Messager tellDroidActive = new Messager();
 				//tellDroid.Tx //tell droid there is somwon at the door
-				HTTPHost.Start();
+				//HTTPHost.Start();
 				Console.Write(msg);
 				break;
 			case "K:Unknown":
 				//unknowen person at the kenect activate http web picture and tell the droid
 				Messager tellDroidUnknown = new Messager();
 				//tellDroid.Tx //tell droid there is somwon at the door
-				HTTPHost.Start();
+				//1wHTTPHost.Start();
 				Console.Write(msg);
 				break;
 			case "D:H-Lights-ON":
@@ -159,38 +159,53 @@ namespace gpServer{
 				 * greenOn greenOff
 				 * pulseBlue pulseRed
 				 * lampOn LampOff
+				 * servoOn servoOff
 				 */
-				Messager snap = new Messager ();
-				//snap.Tx("192.168.0.65", 2000,"greenOn");
-				Console.Write(msg+":Working");
+				Messager snapHOn = new Messager ();
+				snapHOn.Tx("192.168.0.65", 2000,"greenOn");
+				Console.Write(msg+":Sending");
 				break;
 			case "D:H-Lights-OFF":
 				//droid has requested the hall light be turned of, send to embedded LightsOF
-				Console.Write(msg+":Working");
+				Messager snapHOff = new Messager ();
+				snapHOff.Tx("192.168.0.65", 2000,"greenOff");
+				Console.Write(msg+":Sending");
 				break;
 			case "D:B-Lights-ON":
 				//droid has requested the bedroom light be turned on, send to embedded LightsON
-				Console.Write(msg+":Working");
+				Messager snapBOn = new Messager ();
+				snapBOn.Tx("192.168.0.65", 2000,"pulseBlue");
+				Console.Write(msg+":Sending");
 				break;
 			case "D:B-Lights-OFF":
 				//droid has requested the bedroom light be turned of, send to embedded LightsOF
-				Console.Write(msg+":Working");
+				Messager snapBOff = new Messager ();
+				snapBOff.Tx("192.168.0.65", 2000,"pulseBlue");
+				Console.Write(msg+":Sending");
 				break;
 			case "D:L-Lights-ON":
 				//droid has requested the living room light be turned on, send to embedded LightsON
-				Console.Write(msg+":Working");
+				Messager snapLOn = new Messager ();
+				snapLOn.Tx("192.168.0.65", 2000,"pulseRed");
+				Console.Write(msg+":Sending");
 				break;
 			case "D:L-Lights-OFF":
 				//droid has requested the living room light be turned of, send to embedded LightsOF
-				Console.Write(msg+":Working");
+				Messager snapLOff = new Messager ();
+				snapLOff.Tx("192.168.0.65", 2000,"pulseRed");
+				Console.Write(msg+":Sending");
 				break;
 			case "D:WC-Lights-ON":
 				//droid has requested the bathroom light be turned on, send to embedded LightsON
-				Console.Write(msg+":Working");
+				Messager snapWCOn = new Messager ();
+				snapWCOn.Tx("192.168.0.65", 2000,"lightOn");
+				Console.Write(msg+":Sending");
 				break;
 			case "D:WC-Lights-OFF":
 				//droid has requested the bathroom light be turned of, send to embedded LightsOF
-				Console.Write(msg+":Working");
+				Messager snapWCOff = new Messager ();
+				snapWCOff.Tx("192.168.0.65", 2000,"lightOff");
+				Console.Write(msg+":Sending");
 				break;
 			case "D:addUsr":
 				//droid has requested to add user to acl
@@ -202,11 +217,15 @@ namespace gpServer{
 				break;
 			case "D:blockUsr":
 				//droid has requested user be blocked
-				Console.Write(msg);
+				ACLs.blockUsr(1);
+				HTTPHost.Start();
+				Console.Write(msg+":Blocking user 1");
 				break; 
 			case "D:allowUsr":
 				//droid has requested user be allowed
-				Console.Write(msg);
+				ACLs.allowUsr(1);
+				HTTPHost.Start();
+				Console.Write(msg+":Allowing user 1");
 				break;
 			case "D:takePic":
 				//droid has requested image from the cenect
