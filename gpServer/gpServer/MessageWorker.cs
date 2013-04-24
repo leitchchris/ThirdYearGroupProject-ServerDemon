@@ -27,8 +27,8 @@ namespace gpServer{
 			Console.WriteLine("Started MessageWorker at - {0}", time.ToString(format));
 			//Console.Write (" I think the IP is: {0}",); //deprecated,  gan get the wrong ip addess, check with your settings
 			//IPAddress ipAddress = Dns.GetHostEntry("localhost").AddressList[0]; //gets the loopback, comenting out
-			//try{
-				IPAddress ip = IPAddress.Parse("192.168.1.2");
+			try{
+				IPAddress ip = IPAddress.Parse(LocalIPAddress());
 				Console.WriteLine (" The program thinks the ip: {0}", ip); //this is the corect IP
 				
 				listener = new TcpListener (ip,2001);
@@ -38,25 +38,25 @@ namespace gpServer{
 					Thread t = new Thread (new ThreadStart (ListnerService));
 					t.Start ();
 				}
-			//}catch {
-//				Console.WriteLine("Faild to get host ip. PLease spesafy local ip: eg 192.168.1.1\n");
-//				string userIP = Console.ReadLine();
-//				IPAddress localIp = IPAddress.Parse(userIP);
-//				listener = new TcpListener (localIp,2001);
-//				Console.WriteLine (" The program thinks the ip: {0}", localIp); //this is the corect IP
-//				
-//				listener = new TcpListener (localIp,2001);
-//				listener.Start ();
-//				Console.WriteLine ("\nServer started on 2001");
-//				for (int i = 0; i <LIMIT; i++) {
-//					Thread t = new Thread (new ThreadStart (ListnerService));
-//					t.Start ();
-//			//	}
-			//}
+			}catch {
+				Console.WriteLine("Faild to get host ip. Please manualy spesafy local ip: eg 192.168.1.1\n");
+				string userIP = Console.ReadLine();
+				IPAddress localIp = IPAddress.Parse(userIP);
+				listener = new TcpListener (localIp,2001);
+				Console.WriteLine (" The program thinks the ip: {0}", localIp); //this is the corect IP
+				
+				listener = new TcpListener (localIp,2001);
+				listener.Start ();
+				Console.WriteLine ("\nServer started on 2001");
+				for (int i = 0; i <LIMIT; i++) {
+					Thread t = new Thread (new ThreadStart (ListnerService));
+					t.Start ();
+				}
+			}
 			//IPAddress ip = IPAddress.Parse("192.168.0.1"); //mac
 
 		}
-		public static void ListnerService(){
+		private static void ListnerService(){
 			try {
 			Byte[] bytes = new byte[256];
 			string data = null;
@@ -86,7 +86,7 @@ namespace gpServer{
 			}
 		}
 
-		public string LocalIPAddress()
+		private string LocalIPAddress()
 		{
 			IPHostEntry host;
 			string localIP = "";
@@ -101,7 +101,7 @@ namespace gpServer{
 			return localIP;
 		}
 
-		public string GetIP(){
+		private string GetIP(){
 			string strHostName = "";
 			strHostName = System.Net.Dns.GetHostName();
 			IPHostEntry ipEntry = System.Net.Dns.GetHostEntry(strHostName);
@@ -109,7 +109,7 @@ namespace gpServer{
 			return addr[addr.Length-1].ToString();
 		}
 
-		public static void MessageParse(string data){
+		private static void MessageParse(string data){
 			Console.WriteLine ("in:"+data);
 			string input = data;
 			Match matchIP = Regex.Match (input, @"D:(\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b)"); //match for an ip sent to the server
@@ -161,8 +161,8 @@ namespace gpServer{
 				 * lampOn LampOff
 				 */
 				Messager snap = new Messager ();
-				snap.Tx("192.168.0.65", 2000,"greenOn");
-				Console.Write(msg);
+				//snap.Tx("192.168.0.65", 2000,"greenOn");
+				Console.Write(msg+":Working");
 				break;
 			case "D:H-Lights-OFF":
 				//droid has requested the hall light be turned of, send to embedded LightsOF
@@ -204,9 +204,14 @@ namespace gpServer{
 				//droid has requested user be blocked
 				Console.Write(msg);
 				break; 
-
-				//and in D;takePic
-				//look and unknow persen directory send url for that to droid 
+			case "D:allowUsr":
+				//droid has requested user be allowed
+				Console.Write(msg);
+				break;
+			case "D:takePic":
+				//droid has requested image from the cenect
+				Console.Write(msg);
+				break; 
 			}
 		}//end messageParse
 

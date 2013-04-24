@@ -1,9 +1,9 @@
 using System;
-using System.Net;
 using System.Threading;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Drawing;
 
 namespace gpServer
 {
@@ -19,7 +19,7 @@ namespace gpServer
 			httpd ws = new httpd(SendResponse, "http://localhost:8080/");
 			httpd ws2 = new httpd(testPage, "http://localhost:8080/test/");
 			httpd ws3 = new httpd(xml, "http://localhost:8080/xml/"); //when sending replace localhost with server ip
-			httpd ws4 = new httpd(xml, "http://localhost:8080/pic/");
+			httpd ws4 = new httpd(pic, "http://localhost:8080/pic/");
 			ws.Run();
 			ws2.Run();
 			ws3.Run();
@@ -41,6 +41,11 @@ namespace gpServer
 		{
 			string acl = File.ReadAllText(@"./accessList.xml");
 			return string.Format(acl);    
+		}
+		public static string pic(HttpListenerRequest request)
+		{
+			Image capturedPic = Image.FromFile (@"./foo.png");
+			return string.Format("<HTML><BODY><img border=\"0\" src=\"./{0}\"></BODY></HTML>",capturedPic);
 		}
 	}
 }
