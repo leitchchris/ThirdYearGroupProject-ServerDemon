@@ -218,13 +218,13 @@ namespace gpServer{
 			case "D:blockUsr":
 				//droid has requested user be blocked
 				ACLs.blockUsr(1);
-				HTTPHost.Start();
+				//HTTPHost.Start();
 				Console.Write(msg+":Blocking user 1");
 				break; 
 			case "D:allowUsr":
 				//droid has requested user be allowed
 				ACLs.allowUsr(1);
-				HTTPHost.Start();
+				//HTTPHost.Start();
 				Console.Write(msg+":Allowing user 1");
 				break;
 			case "D:takePic":
