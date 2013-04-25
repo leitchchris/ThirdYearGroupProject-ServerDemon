@@ -18,10 +18,10 @@ namespace gpServer
 		}
 		public static void Start(){
 			
-			httpd ws = new httpd(SendResponse, "http://localhost:8080/");
-			httpd ws2 = new httpd(testPage, "http://localhost:8080/test/");
-			httpd ws3 = new httpd(xml, "http://localhost:8080/xml/"); //when sending replace localhost with server ip
-			httpd ws4 = new httpd(pic, "http://localhost:8080/pic/");
+			httpd ws = new httpd(SendResponse, "http://localhost:80/");
+			httpd ws2 = new httpd(testPage, "http://localhost:80/test/");
+			httpd ws3 = new httpd(xml, "http://localhost:80/xml/"); //when sending replace localhost with server ip
+			httpd ws4 = new httpd(pic, "http://localhost:80/pic/");
 			ws.Run();
 			ws2.Run();
 			ws3.Run();
