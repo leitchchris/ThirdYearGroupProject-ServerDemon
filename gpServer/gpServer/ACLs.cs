@@ -102,7 +102,7 @@ namespace gpServer {
 			Console.WriteLine ("ACL: " + allow.InnerXml +" : ");
 			allow.InnerXml = block;
 			Console.WriteLine ("ACL: " + allow.InnerXml +" : ");
-			acl.Save(@"./accessList.xml");
+			acl.Save(@"/var/www/accessList.xml");
 		}
 
 		public static void allowUsr(int aclID){
@@ -118,7 +118,7 @@ namespace gpServer {
 			Console.WriteLine ("ACL: " + allow.InnerXml +" : ");
 			allow.InnerXml = unblock;
 			Console.WriteLine ("ACL: " + allow.InnerXml +" : ");
-			acl.Save(@"./accessList.xml");
+			acl.Save(@"/var/www/accessList.xml");
 		}
 
 
