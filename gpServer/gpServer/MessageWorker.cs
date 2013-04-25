@@ -140,14 +140,14 @@ namespace gpServer{
 				break;
 			case "K:Active":
 				//kenect has been activates and nead to colect the aprochers information and send it to the droid
-				Messager tellDroidActive = new Messager();
+				Messenger tellDroidActive = new Messenger();
 				//tellDroid.Tx //tell droid there is somwon at the door
 				//HTTPHost.Start();
 				Console.Write(msg);
 				break;
 			case "K:Unknown":
 				//unknowen person at the kenect activate http web picture and tell the droid
-				Messager tellDroidUnknown = new Messager();
+				Messenger tellDroidUnknown = new Messenger();
 				//tellDroid.Tx //tell droid there is somwon at the door
 				//1wHTTPHost.Start();
 				Console.Write(msg);
@@ -161,49 +161,49 @@ namespace gpServer{
 				 * lampOn LampOff
 				 * servoOn servoOff
 				 */
-				Messager snapHOn = new Messager ();
+				Messenger snapHOn = new Messenger ();
 				snapHOn.Tx("192.168.0.65", 2000,"greenOn");
 				Console.Write(msg+":Sending");
 				break;
 			case "D:H-Lights-OFF":
 				//droid has requested the hall light be turned of, send to embedded LightsOF
-				Messager snapHOff = new Messager ();
+				Messenger snapHOff = new Messenger ();
 				snapHOff.Tx("192.168.0.65", 2000,"greenOff");
 				Console.Write(msg+":Sending");
 				break;
 			case "D:B-Lights-ON":
 				//droid has requested the bedroom light be turned on, send to embedded LightsON
-				Messager snapBOn = new Messager ();
+				Messenger snapBOn = new Messenger ();
 				snapBOn.Tx("192.168.0.65", 2000,"pulseBlue");
 				Console.Write(msg+":Sending");
 				break;
 			case "D:B-Lights-OFF":
 				//droid has requested the bedroom light be turned of, send to embedded LightsOF
-				Messager snapBOff = new Messager ();
+				Messenger snapBOff = new Messenger ();
 				snapBOff.Tx("192.168.0.65", 2000,"pulseBlue");
 				Console.Write(msg+":Sending");
 				break;
 			case "D:L-Lights-ON":
 				//droid has requested the living room light be turned on, send to embedded LightsON
-				Messager snapLOn = new Messager ();
+				Messenger snapLOn = new Messenger ();
 				snapLOn.Tx("192.168.0.65", 2000,"pulseRed");
 				Console.Write(msg+":Sending");
 				break;
 			case "D:L-Lights-OFF":
 				//droid has requested the living room light be turned of, send to embedded LightsOF
-				Messager snapLOff = new Messager ();
+				Messenger snapLOff = new Messenger ();
 				snapLOff.Tx("192.168.0.65", 2000,"pulseRed");
 				Console.Write(msg+":Sending");
 				break;
 			case "D:WC-Lights-ON":
 				//droid has requested the bathroom light be turned on, send to embedded LightsON
-				Messager snapWCOn = new Messager ();
+				Messenger snapWCOn = new Messenger ();
 				snapWCOn.Tx("192.168.0.65", 2000,"lightOn");
 				Console.Write(msg+":Sending");
 				break;
 			case "D:WC-Lights-OFF":
 				//droid has requested the bathroom light be turned of, send to embedded LightsOF
-				Messager snapWCOff = new Messager ();
+				Messenger snapWCOff = new Messenger ();
 				snapWCOff.Tx("192.168.0.65", 2000,"lightOff");
 				Console.Write(msg+":Sending");
 				break;

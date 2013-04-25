@@ -1,19 +1,20 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Main.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="IdWorker.cs">
     <Files>
       <File FileName="ACLs.cs" Line="11" Column="29" />
-      <File FileName="MessageWorker.cs" Line="115" Column="15" />
-      <File FileName="HTTPHost.cs" Line="17" Column="27" />
+      <File FileName="MessageWorker.cs" Line="77" Column="73" />
+      <File FileName="HTTPHost.cs" Line="47" Column="56" />
       <File FileName="Main.cs" Line="70" Column="1" />
-      <File FileName="Messager.cs" Line="53" Column="8" />
+      <File FileName="Messenger.cs" Line="9" Column="24" />
+      <File FileName="EmbededWorker.cs" Line="18" Column="3" />
+      <File FileName="httpd.cs" Line="11" Column="89" />
+      <File FileName="IdWorker.cs" Line="50" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="gpServer" expanded="True">
-            <Node name="Main.cs" selected="True" />
-          </Node>
+        <State expanded="True" selected="True">
+          <Node name="gpServer" expanded="True" />
         </State>
       </Pad>
     </Pads>

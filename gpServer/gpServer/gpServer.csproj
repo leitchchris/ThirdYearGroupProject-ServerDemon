@@ -47,11 +47,11 @@
     <Compile Include="MessageWorker.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="EmbededWorker.cs" />
-    <Compile Include="Messager.cs" />
     <Compile Include="IDPicRx.cs" />
     <Compile Include="httpd.cs" />
     <Compile Include="HTTPHost.cs" />
     <Compile Include="ACLs.cs" />
+    <Compile Include="Messenger.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

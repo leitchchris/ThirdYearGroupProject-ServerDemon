@@ -52,8 +52,8 @@ namespace gpServer{
 					//int port = Console.ReadLine();
 					//Console.WriteLine("Please enter the ip");
 					//string ip = Console.ReadLine();
-					Console.WriteLine("Starting Messager");
-					Messager mgr = new Messager();
+					Console.WriteLine("Starting Messenger");
+					Messenger mgr = new Messenger();
 					Console.Write("Please enter the ip\n");
 					string ip = Console.ReadLine();
 					mgr.Tx(ip,2002); //send to droid port
@@ -67,7 +67,7 @@ namespace gpServer{
 				case "-E":
 				case "-e":
 					Console.WriteLine("Starting EmbededWorker");
-					Messager snap = new Messager ();
+					Messenger snap = new Messenger ();
 					snap.Tx("192.168.0.65", 2000,"greenOn");
 					break;
 				case "-?":

@@ -9,7 +9,7 @@ namespace gpServer
 	{
 
 		/*
-		 * USE MESSAGER INSTED
+		 * DEPRICATED: USE Messenger INSTED
 		 */
 
 		public string host { get; set;}

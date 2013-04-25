@@ -6,12 +6,12 @@ using System.Net.Sockets;
 
 namespace gpServer
 {
-	public class Messager
+	public class Messenger
 	{
 		public string host { get; set;}
 		public int port { get; set; }
 
-		public Messager ()
+		public Messenger ()
 		{
 		}
 
