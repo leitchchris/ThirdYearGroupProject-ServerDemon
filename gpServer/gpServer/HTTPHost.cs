@@ -41,7 +41,7 @@ namespace gpServer
 		}
 		public static string xml(HttpListenerRequest request)
 		{
-			string acl = File.ReadAllText(@"./accessList.xml");
+			string acl = File.ReadAllText(@"/var/www/accessList.xml");
 			return string.Format(acl);    
 		}
 		public static string pic(HttpListenerRequest request)
