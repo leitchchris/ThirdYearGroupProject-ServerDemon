@@ -91,7 +91,7 @@ namespace gpServer {
 
 		public static void blockUsr(int aclID){
 			string block = "BAN";
-			XmlTextReader reader = new XmlTextReader (@"./accessList.xml");
+			XmlTextReader reader = new XmlTextReader (@"/var/www/accessList.xml");
 			XmlDocument acl = new XmlDocument();
 			acl.Load (reader);
 			reader.Close();
@@ -107,7 +107,7 @@ namespace gpServer {
 
 		public static void allowUsr(int aclID){
 			string unblock = "TRUE";
-			XmlTextReader reader = new XmlTextReader (@"./accessList.xml");
+			XmlTextReader reader = new XmlTextReader (@"/var/www/accessList.xml");
 			XmlDocument acl = new XmlDocument();
 			acl.Load (reader);
 			reader.Close();
